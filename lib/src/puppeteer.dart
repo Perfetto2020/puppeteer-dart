@@ -182,6 +182,7 @@ class Puppeteer {
           // Attempt to close chrome gracefully
           await connection.send('Browser.close').catchError((error) async {
             await _killChrome(chromeProcess);
+            return <String, dynamic>{};
           });
         }
 
