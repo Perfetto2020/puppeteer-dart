@@ -1438,13 +1438,15 @@ function deliverError(name, seq, message, stack) {
       bool? fullPage,
       Rectangle? clip,
       int? quality,
-      bool? omitBackground}) async {
+      bool? omitBackground,
+      bool captureBeyondViewport = true}) async {
     return base64Decode(await screenshotBase64(
         format: format,
         fullPage: fullPage,
         clip: clip,
         quality: quality,
-        omitBackground: omitBackground));
+        omitBackground: omitBackground,
+        captureBeyondViewport: captureBeyondViewport));
   }
 
   /// Parameters:
@@ -1468,7 +1470,8 @@ function deliverError(name, seq, message, stack) {
       bool? fullPage,
       Rectangle? clip,
       int? quality,
-      bool? omitBackground}) {
+      bool? omitBackground,
+      bool captureBeyondViewport = true}) {
     final localFormat = format ?? ScreenshotFormat.png;
     final localFullPage = fullPage ?? false;
     omitBackground ??= false;
@@ -1511,7 +1514,7 @@ function deliverError(name, seq, message, stack) {
           format: localFormat.name,
           quality: quality,
           clip: roundedClip,
-          captureBeyondViewport: true);
+          captureBeyondViewport: captureBeyondViewport);
       if (shouldSetDefaultBackground) {
         await devTools.emulation.setDefaultBackgroundColorOverride();
       }
