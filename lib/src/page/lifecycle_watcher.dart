@@ -137,6 +137,8 @@ class Until {
   static final domContentLoaded = Until._('DOMContentLoaded');
   static final networkIdle = Until._('networkIdle');
   static final networkAlmostIdle = Until._('networkAlmostIdle');
+  static final firstContentfulPaint = Until._('firstContentfulPaint');
+  static final interactiveTime = Until._('InteractiveTime');
 
   final List<String> _events = [];
 
